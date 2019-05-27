@@ -38,16 +38,12 @@ DEPENDENCIES="
         media-sound/pulseaudio[equalizer]
 "
 
-BUGS_TO="hasufell@posteo.de"
+BUGS_TO="rosen.aleksandrov.1988@mail.ru"
 
 src_prepare() {
     edo sed -i \
             -e "/get_python_lib/s#prefix=\"\"#prefix=\"/usr/$(exhost --target)\"#" \
             "${MESON_SOURCE}"/meson.build
-
-    edo sed -i \
-            -e "s:/usr/bin/env python.*$:/usr/$(exhost --target)/bin/env ${PYTHON}:" \
-            "${MESON_SOURCE}"/pulseeffects.in
 
     meson_src_prepare
 }
